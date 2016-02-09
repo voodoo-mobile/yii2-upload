@@ -1,5 +1,5 @@
 <?php
-namespace yii2vm\web\upload;
+namespace vm\upload;
 
 /**
  * Class Base64Source
