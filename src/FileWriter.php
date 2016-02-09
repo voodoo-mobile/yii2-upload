@@ -1,5 +1,6 @@
 <?php
-namespace yii2vm\web\upload;
+
+namespace vm\upload;
 
 use yii\helpers\ArrayHelper;
 use yii\helpers\FileHelper;
