@@ -1,7 +1,7 @@
 <?php
 namespace vm\upload;
 
-class UriSource
+class UriSource extends Source
 {
     public $uri;
 

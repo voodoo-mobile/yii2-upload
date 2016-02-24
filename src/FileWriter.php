@@ -22,13 +22,18 @@ class FileWriter extends Writer
     public $extension = null;
 
     /**
+     * @var bool
+     */
+    public $useFullPath = false;
+
+    /**
      * @param $content
      *
      * @return mixed
      */
     public function save($content)
     {
-        $path = $this->target . '/' . $this->filename;
+        $path = $this->buildPath();
 
         $this->createDir($path);
         file_put_contents($path, $content);
@@ -65,5 +70,17 @@ class FileWriter extends Writer
         if (!file_exists($directory)) {
             mkdir($directory);
         }
+    }
+
+
+    private function buildPath()
+    {
+        $path = $this->target . '/' . $this->filename;
+
+        if ($this->useFullPath) {
+            $path = \Yii::getAlias('@webroot/') . $path;
+        }
+
+        return $path;
     }
 }
