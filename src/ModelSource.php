@@ -1,12 +1,12 @@
 <?php
 
-namespace vm\upload;
+namespace vr\upload;
 
 use yii\web\UploadedFile;
 
 /**
  * Class ModelSource
- * @package yii2vm\web\upload
+ * @package yii2vr\web\upload
  */
 class ModelSource extends Source
 {

@@ -1,9 +1,9 @@
 <?php
-namespace vm\upload;
+namespace vr\upload;
 
 /**
  * Class Base64Source
- * @package yii2vm\web\upload
+ * @package yii2vr\web\upload
  */
 class Base64Source extends Source
 {

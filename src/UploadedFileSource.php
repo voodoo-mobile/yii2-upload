@@ -1,5 +1,5 @@
 <?php
-namespace vm\upload;
+namespace vr\upload;
 
 use yii\web\UploadedFile;
 

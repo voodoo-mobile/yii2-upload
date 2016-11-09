@@ -1,39 +1,39 @@
 {
-  "name": "voodoo-mobile/yii2-upload",
-  "type": "library",
-  "description": "Manages all binary uploaded files",
-  "keywords": [
-    "upload",
-    "binary"
-  ],
-  "homepage": "https://github.com/voodoo-mobile/yii2-upload",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Voodoo Mobile Ltd",
-      "email": "public@voodoo-mobile.com",
-      "homepage": "http://voodoo-mobile.com"
-    }
-  ],
-  "minimum-stability": "dev",
-  "require": {
-    "php": ">=5.4.0",
-    "yiisoft/yii2": "~2.0"
-  },
-  "autoload": {
-    "psr-0": {
-      "Upload": "src"
-    },
-    "psr-4": {
-      "vm\\upload\\": "src/"
-    }
-  },
-  "extra": {
-    "asset-installer-paths": {
-      "npm-asset-library": "vendor/npm",
-      "bower-asset-library": "vendor/bower"
-    },
-    "writable": [
-    ]
-  }
+	"name": "voodoo-rocks/yii2-upload",
+	"type": "library",
+	"description": "Manages all binary uploaded files",
+	"keywords": [
+		"upload",
+		"binary"
+	],
+	"homepage": "https://github.com/voodoo-rocks/yii2-upload",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Voodoo Rocks Ltd",
+			"email": "public@voodoo.rocks",
+			"homepage": "http://voodoo.rocks"
+		}
+	],
+	"minimum-stability": "dev",
+	"require": {
+		"php": ">=5.4.0",
+		"yiisoft/yii2": "~2.0"
+	},
+	"autoload": {
+		"psr-0": {
+			"Upload": "src"
+		},
+		"psr-4": {
+			"vr\\upload\\": "src/"
+		}
+	},
+	"extra": {
+		"asset-installer-paths": {
+			"npm-asset-library": "vendor/npm",
+			"bower-asset-library": "vendor/bower"
+		},
+		"writable": [
+		]
+	}
 }

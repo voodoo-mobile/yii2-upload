@@ -1,13 +1,13 @@
 <?php
 
-namespace vm\upload;
+namespace vr\upload;
 
 use yii\helpers\ArrayHelper;
 use yii\helpers\FileHelper;
 
 /**
  * Class FileWriter
- * @package yii2vm\web\upload
+ * @package yii2vr\web\upload
  */
 class FileWriter extends Writer
 {
