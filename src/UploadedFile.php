@@ -1,12 +1,12 @@
 <?php
 
-namespace vm\upload;
+namespace vr\upload;
 
 use yii\base\Component;
 
 /**
  * Class UploadedFile
- * @package yii2vm\web
+ * @package yii2vr\web
  *
  *          Handles uploaded files. In opposite to the default uploaded file it provides few ways to load a file from
  *          different sources and allows saving with few different writers like file and s3.

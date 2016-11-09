@@ -1,5 +1,5 @@
 <?php
-namespace vm\upload;
+namespace vr\upload;
 
 class UriSource extends Source
 {

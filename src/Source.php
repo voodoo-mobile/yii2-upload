@@ -1,12 +1,12 @@
 <?php
 
-namespace vm\upload;
+namespace vr\upload;
 
 use yii\base\Component;
 
 /**
  * Class Source
- * @package yii2vm\web\upload
+ * @package yii2vr\web\upload
  */
 abstract class Source extends Component
 {
