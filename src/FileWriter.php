@@ -2,9 +2,6 @@
 
 namespace vr\upload;
 
-use yii\helpers\ArrayHelper;
-use yii\helpers\FileHelper;
-
 /**
  * Class FileWriter
  * @package yii2vr\web\upload
@@ -38,7 +35,9 @@ class FileWriter extends Writer
         $this->createDir($path);
         file_put_contents($path, $content);
 
-        $this->getExtension($path);
+        if (!$this->extension) {
+            $this->extension = $this->determineExtension($content);
+        }
 
         if ($this->extension) {
             rename($path, $path . '.' . $this->extension);
@@ -47,31 +46,6 @@ class FileWriter extends Writer
 
         return $path;
     }
-
-    /**
-     * @param $filename
-     *
-     * @throws \yii\base\InvalidConfigException
-     */
-    private function getExtension($filename)
-    {
-        if (!$this->extension) {
-            $mime       = FileHelper::getMimeType($filename);
-            $extensions = FileHelper::getExtensionsByMimeType($mime);
-            if (count($extensions) > 0) {
-                $this->extension = ArrayHelper::getValue($extensions, count($extensions) - 1);
-            }
-        }
-    }
-
-    private function createDir($path)
-    {
-        $directory = pathinfo($path, PATHINFO_DIRNAME);
-        if (!file_exists($directory)) {
-            mkdir($directory);
-        }
-    }
-
 
     private function buildPath()
     {
@@ -82,5 +56,13 @@ class FileWriter extends Writer
         }
 
         return $path;
+    }
+
+    private function createDir($path)
+    {
+        $directory = pathinfo($path, PATHINFO_DIRNAME);
+        if (!file_exists($directory)) {
+            mkdir($directory);
+        }
     }
 }
