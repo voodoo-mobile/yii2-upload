@@ -4,6 +4,8 @@ namespace vr\upload;
 
 use yii\base\Component;
 use yii\db\ActiveRecord;
+use yii\helpers\ArrayHelper;
+use yii\helpers\FileHelper;
 use yii\helpers\Inflector;
 
 /**
@@ -33,22 +35,15 @@ abstract class Writer extends Component
     }
 
     /**
-     * @param $content
-     *
-     * @return mixed
-     */
-    abstract public function save($content);
-
-    /**
      * @param  ActiveRecord $activeRecord
      * @param               $attribute
-     * @param null          $extension
+     * @param null $extension
      *
      * @return string
      */
     public function getFilenameFor($activeRecord, $attribute, $extension = null)
     {
-        $path     = Inflector::camel2id((new \ReflectionClass($activeRecord))->getShortName());
+        $path = Inflector::camel2id((new \ReflectionClass($activeRecord))->getShortName());
         $basename = implode('-', $activeRecord->getPrimaryKey(true)) . '-' . $attribute;
 
         if ($extension) {
@@ -56,5 +51,32 @@ abstract class Writer extends Component
         }
 
         return $path . DIRECTORY_SEPARATOR . $basename;
+    }
+
+    /**
+     * @param $content
+     *
+     * @return mixed
+     */
+    abstract public function save($content);
+
+    /**
+     * @param $content
+     *
+     * @return mixed
+     * @throws \yii\base\InvalidConfigException
+     */
+    protected function determineExtension($content)
+    {
+        $filename = \Yii::getAlias('@runtime/' . uniqid());
+        file_put_contents($filename, $content);
+
+        $mime = FileHelper::getMimeType($filename);
+
+        $extensions = FileHelper::getExtensionsByMimeType($mime);
+
+        unlink($filename);
+
+        return ArrayHelper::getValue($extensions, max(count($extensions) - 1, 0));
     }
 }
