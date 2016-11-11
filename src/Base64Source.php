@@ -7,6 +7,7 @@ namespace vr\upload;
  */
 class Base64Source extends Source
 {
+    const STOPPER = 'base64,';
     /**
      * @var
      */
@@ -20,6 +21,10 @@ class Base64Source extends Source
      */
     public static function create($base64)
     {
+        if (($pos = strpos($base64, self::STOPPER)) !== false) {
+            $base64 = substr($base64, $pos + strlen(self::STOPPER));
+        }
+
         return \Yii::createObject([
             'class'  => self::className(),
             'base64' => $base64
